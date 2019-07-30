@@ -1,0 +1,72 @@
+2019-06-20 07:42:17.845487: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2019-06-20 07:42:17.845537: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2019-06-20 07:42:17.845548: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2019-06-20 07:42:18.010177: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:0a:00.0
+Total memory: 10.91GiB
+Free memory: 7.32GiB
+2019-06-20 07:42:18.010232: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2019-06-20 07:42:18.010245: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2019-06-20 07:42:18.010261: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:0a:00.0)
+/home/thang/.local/lib/python2.7/site-packages/skimage/transform/_warps.py:105: UserWarning: The default mode, 'constant', will be changed to 'reflect' in skimage 0.15.
+  warn("The default mode, 'constant', will be changed to 'reflect' in "
+/home/thang/.local/lib/python2.7/site-packages/skimage/transform/_warps.py:110: UserWarning: Anti-aliasing will be enabled by default in skimage 0.15 to avoid aliasing artifacts when down-sampling images.
+  warn("Anti-aliasing will be enabled by default in skimage 0.15 to "
+ostrich
+ostrich
+ostrich
+ostrich
+ostrich
+ostrich
+ostrich
+ostrich
+ostrich
+ostrich
+mattress
+mattress
+mattress
+mattress
+mattress
+mattress
+mattress
+mattress
+mattress
+mattress
+2019-06-20 07:58:46.892227: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2019-06-20 07:58:46.892292: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2019-06-20 07:58:46.892303: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2019-06-20 07:58:47.046074: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:0a:00.0
+Total memory: 10.91GiB
+Free memory: 7.32GiB
+2019-06-20 07:58:47.046123: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2019-06-20 07:58:47.046136: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2019-06-20 07:58:47.046150: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:0a:00.0)
+/home/thang/.local/lib/python2.7/site-packages/skimage/transform/_warps.py:105: UserWarning: The default mode, 'constant', will be changed to 'reflect' in skimage 0.15.
+  warn("The default mode, 'constant', will be changed to 'reflect' in "
+/home/thang/.local/lib/python2.7/site-packages/skimage/transform/_warps.py:110: UserWarning: Anti-aliasing will be enabled by default in skimage 0.15 to avoid aliasing artifacts when down-sampling images.
+  warn("Anti-aliasing will be enabled by default in skimage 0.15 to "
+ostrich
+ostrich
+ostrich
+ostrich
+ostrich
+ostrich
+ostrich
+ostrich
+ostrich
+ostrich
+mattress
+mattress
+mattress
+mattress
+mattress
+mattress
+mattress
+mattress
+mattress
+mattress

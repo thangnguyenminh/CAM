@@ -1,0 +1,3654 @@
+Traceback (most recent call last):
+  File "train.caltech.py", line 5, in <module>
+    from detector import Detector
+  File "/media/data3/thang/home/PACHA/Weakly_detector/src/detector.py", line 4, in <module>
+    import ipdb
+ImportError: No module named ipdb
+]0;IPython: Weakly_detector/srcTraceback (most recent call last):
+  File "train.caltech.py", line 69, in <module>
+    p1,p2,p3,p4,conv5, conv6, gap, output = detector.inference(images_tf)
+  File "/media/data3/thang/home/PACHA/Weakly_detector/src/detector.py", line 113, in inference
+    r, g, b = tf.split(3, 3, rgb)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/array_ops.py", line 1232, in split
+    split_dim=axis, num_split=num_or_size_splits, value=value, name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/gen_array_ops.py", line 3490, in _split
+    num_split=num_split, name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/op_def_library.py", line 513, in apply_op
+    (prefix, dtypes.as_dtype(input_arg.type).name))
+TypeError: Input 'split_dim' of 'Split' Op has type float32 that does not match expected type of int32.
+
+If you suspect this is an IPython bug, please report it at:
+    https://github.com/ipython/ipython/issues
+or send an email to the mailing list at ipython-dev@python.org
+
+You can print a more detailed traceback right now with "%tb", or use "%debug"
+to interactively debug it.
+
+Extra-detailed tracebacks for bug-reporting purposes can be enabled via:
+    %config Application.verbose_crash=True
+
+]0;IPython: Weakly_detector/srcTraceback (most recent call last):
+  File "train.caltech.py", line 69, in <module>
+    p1,p2,p3,p4,conv5, conv6, gap, output = detector.inference(images_tf)
+  File "/media/data3/thang/home/PACHA/Weakly_detector/src/detector.py", line 118, in inference
+    r-self.image_mean[2]
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/array_ops.py", line 1061, in concat
+    dtype=dtypes.int32).get_shape(
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/ops.py", line 611, in convert_to_tensor
+    as_ref=False)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/ops.py", line 676, in internal_convert_to_tensor
+    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/constant_op.py", line 121, in _constant_tensor_conversion_function
+    return constant(v, dtype=dtype, name=name)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/constant_op.py", line 102, in constant
+    tensor_util.make_tensor_proto(value, dtype=dtype, shape=shape, verify_shape=verify_shape))
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/tensor_util.py", line 376, in make_tensor_proto
+    _AssertCompatible(values, dtype)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/framework/tensor_util.py", line 302, in _AssertCompatible
+    (dtype.name, repr(mismatch), type(mismatch).__name__))
+TypeError: Expected int32, got list containing Tensors of type '_Message' instead.
+
+If you suspect this is an IPython bug, please report it at:
+    https://github.com/ipython/ipython/issues
+or send an email to the mailing list at ipython-dev@python.org
+
+You can print a more detailed traceback right now with "%tb", or use "%debug"
+to interactively debug it.
+
+Extra-detailed tracebacks for bug-reporting purposes can be enabled via:
+    %config Application.verbose_crash=True
+
+]0;IPython: Weakly_detector/srcTraceback (most recent call last):
+  File "train.caltech.py", line 70, in <module>
+    loss_tf = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits( output, labels_tf ))
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/nn_ops.py", line 1664, in sparse_softmax_cross_entropy_with_logits
+    labels, logits)
+  File "/usr/local/lib/python2.7/dist-packages/tensorflow/python/ops/nn_ops.py", line 1512, in _ensure_xent_args
+    "named arguments (labels=..., logits=..., ...)" % name)
+ValueError: Only call `sparse_softmax_cross_entropy_with_logits` with named arguments (labels=..., logits=..., ...)
+
+If you suspect this is an IPython bug, please report it at:
+    https://github.com/ipython/ipython/issues
+or send an email to the mailing list at ipython-dev@python.org
+
+You can print a more detailed traceback right now with "%tb", or use "%debug"
+to interactively debug it.
+
+Extra-detailed tracebacks for bug-reporting purposes can be enabled via:
+    %config Application.verbose_crash=True
+
+]0;IPython: Weakly_detector/srcTraceback (most recent call last):
+  File "train.caltech.py", line 70, in <module>
+    loss_tf = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits( logits=output, lables=labels_tf ))
+TypeError: sparse_softmax_cross_entropy_with_logits() got an unexpected keyword argument 'lables'
+
+If you suspect this is an IPython bug, please report it at:
+    https://github.com/ipython/ipython/issues
+or send an email to the mailing list at ipython-dev@python.org
+
+You can print a more detailed traceback right now with "%tb", or use "%debug"
+to interactively debug it.
+
+Extra-detailed tracebacks for bug-reporting purposes can be enabled via:
+    %config Application.verbose_crash=True
+
+]0;IPython: Weakly_detector/srcTraceback (most recent call last):
+  File "train.caltech.py", line 73, in <module>
+    weight_decay = tf.reduce_sum(tf.pack([tf.nn.l2_loss(x) for x in weights_only])) * weight_decay_rate
+AttributeError: 'module' object has no attribute 'pack'
+
+If you suspect this is an IPython bug, please report it at:
+    https://github.com/ipython/ipython/issues
+or send an email to the mailing list at ipython-dev@python.org
+
+You can print a more detailed traceback right now with "%tb", or use "%debug"
+to interactively debug it.
+
+Extra-detailed tracebacks for bug-reporting purposes can be enabled via:
+    %config Application.verbose_crash=True
+
+]0;IPython: Weakly_detector/src2019-06-20 03:17:19.208559: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2019-06-20 03:17:19.208601: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2019-06-20 03:17:19.208612: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2019-06-20 03:17:19.657155: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:0a:00.0
+Total memory: 10.91GiB
+Free memory: 7.32GiB
+2019-06-20 03:17:19.657283: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 
+2019-06-20 03:17:19.657303: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y 
+2019-06-20 03:17:19.657326: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:0a:00.0)
+WARNING:tensorflow:From /usr/local/lib/python2.7/dist-packages/tensorflow/python/util/tf_should_use.py:175: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+train.caltech.py:105: DeprecationWarning: 
+.ix is deprecated. Please use
+.loc for label based indexing or
+.iloc for positional indexing
+
+See the documentation here:
+http://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-indexer-is-deprecated
+  trainset = trainset.ix[ np.random.permutation( len(trainset) )]
+/home/thang/.local/lib/python2.7/site-packages/skimage/transform/_warps.py:105: UserWarning: The default mode, 'constant', will be changed to 'reflect' in skimage 0.15.
+  warn("The default mode, 'constant', will be changed to 'reflect' in "
+/home/thang/.local/lib/python2.7/site-packages/skimage/transform/_warps.py:110: UserWarning: Anti-aliasing will be enabled by default in skimage 0.15 to avoid aliasing artifacts when down-sampling images.
+  warn("Anti-aliasing will be enabled by default in skimage 0.15 to "
+2019-06-20 03:17:29.878583: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.91GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2019-06-20 03:17:30.176702: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.23GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2019-06-20 03:17:30.176788: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.98GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2019-06-20 03:17:30.397250: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.55GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2019-06-20 03:17:30.788091: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.50GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2019-06-20 03:17:31.853021: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.50GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2019-06-20 03:17:32.074165: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.38GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2019-06-20 03:17:32.458553: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.55GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2019-06-20 03:17:32.888855: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.98GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2019-06-20 03:17:32.996526: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 2.39GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+======================================
+Epoch 0 Iteration 5
+Processed 240 / 28037
+Accuracy: 5 / 60
+Training Loss: 5.8724914
+
+
+======================================
+Epoch 0 Iteration 10
+Processed 540 / 28037
+Accuracy: 12 / 60
+Training Loss: 5.256588
+
+
+======================================
+Epoch 0 Iteration 15
+Processed 840 / 28037
+Accuracy: 20 / 60
+Training Loss: 4.580133
+
+
+======================================
+Epoch 0 Iteration 20
+Processed 1140 / 28037
+Accuracy: 21 / 60
+Training Loss: 3.9599037
+
+
+======================================
+Epoch 0 Iteration 25
+Processed 1440 / 28037
+Accuracy: 16 / 60
+Training Loss: 3.574314
+
+
+======================================
+Epoch 0 Iteration 30
+Processed 1740 / 28037
+Accuracy: 25 / 60
+Training Loss: 3.3560853
+
+
+======================================
+Epoch 0 Iteration 35
+Processed 2040 / 28037
+Accuracy: 29 / 60
+Training Loss: 3.0815172
+
+
+======================================
+Epoch 0 Iteration 40
+Processed 2340 / 28037
+Accuracy: 23 / 60
+Training Loss: 3.2181716
+
+
+======================================
+Epoch 0 Iteration 45
+Processed 2640 / 28037
+Accuracy: 28 / 60
+Training Loss: 3.116848
+
+
+======================================
+Epoch 0 Iteration 50
+Processed 2940 / 28037
+Accuracy: 36 / 60
+Training Loss: 2.671011
+
+
+======================================
+Epoch 0 Iteration 55
+Processed 3240 / 28037
+Accuracy: 25 / 60
+Training Loss: 2.7755833
+
+
+======================================
+Epoch 0 Iteration 60
+Processed 3540 / 28037
+Accuracy: 33 / 60
+Training Loss: 2.6314936
+
+
+======================================
+Epoch 0 Iteration 65
+Processed 3840 / 28037
+Accuracy: 35 / 60
+Training Loss: 2.647705
+
+
+======================================
+Epoch 0 Iteration 70
+Processed 4140 / 28037
+Accuracy: 34 / 60
+Training Loss: 2.5215924
+
+
+======================================
+Epoch 0 Iteration 75
+Processed 4440 / 28037
+Accuracy: 31 / 60
+Training Loss: 2.631054
+
+
+======================================
+Epoch 0 Iteration 80
+Processed 4740 / 28037
+Accuracy: 31 / 60
+Training Loss: 2.4772177
+
+
+======================================
+Epoch 0 Iteration 85
+Processed 5040 / 28037
+Accuracy: 34 / 60
+Training Loss: 2.2766972
+
+
+======================================
+Epoch 0 Iteration 90
+Processed 5340 / 28037
+Accuracy: 36 / 60
+Training Loss: 2.3284638
+
+
+======================================
+Epoch 0 Iteration 95
+Processed 5640 / 28037
+Accuracy: 35 / 60
+Training Loss: 2.2813861
+
+
+======================================
+Epoch 0 Iteration 100
+Processed 5940 / 28037
+Accuracy: 32 / 60
+Training Loss: 2.2452087
+
+
+======================================
+Epoch 0 Iteration 105
+Processed 6240 / 28037
+Accuracy: 33 / 60
+Training Loss: 2.4950993
+
+
+======================================
+Epoch 0 Iteration 110
+Processed 6540 / 28037
+Accuracy: 35 / 60
+Training Loss: 2.322178
+
+
+======================================
+Epoch 0 Iteration 115
+Processed 6840 / 28037
+Accuracy: 41 / 60
+Training Loss: 2.1541984
+
+
+======================================
+Epoch 0 Iteration 120
+Processed 7140 / 28037
+Accuracy: 36 / 60
+Training Loss: 2.3662372
+
+
+======================================
+Epoch 0 Iteration 125
+Processed 7440 / 28037
+Accuracy: 34 / 60
+Training Loss: 2.0530677
+
+
+======================================
+Epoch 0 Iteration 130
+Processed 7740 / 28037
+Accuracy: 38 / 60
+Training Loss: 2.186521
+
+
+======================================
+Epoch 0 Iteration 135
+Processed 8040 / 28037
+Accuracy: 39 / 60
+Training Loss: 2.13064
+
+
+======================================
+Epoch 0 Iteration 140
+Processed 8340 / 28037
+Accuracy: 29 / 60
+Training Loss: 2.1801865
+
+
+======================================
+Epoch 0 Iteration 145
+Processed 8640 / 28037
+Accuracy: 40 / 60
+Training Loss: 2.0238414
+
+
+======================================
+Epoch 0 Iteration 150
+Processed 8940 / 28037
+Accuracy: 39 / 60
+Training Loss: 2.108227
+
+
+======================================
+Epoch 0 Iteration 155
+Processed 9240 / 28037
+Accuracy: 34 / 60
+Training Loss: 2.192294
+
+
+======================================
+Epoch 0 Iteration 160
+Processed 9540 / 28037
+Accuracy: 34 / 60
+Training Loss: 2.2599466
+
+
+======================================
+Epoch 0 Iteration 165
+Processed 9840 / 28037
+Accuracy: 43 / 60
+Training Loss: 2.0071716
+
+
+======================================
+Epoch 0 Iteration 170
+Processed 10140 / 28037
+Accuracy: 36 / 60
+Training Loss: 2.3658478
+
+
+======================================
+Epoch 0 Iteration 175
+Processed 10440 / 28037
+Accuracy: 49 / 60
+Training Loss: 2.0899024
+
+
+======================================
+Epoch 0 Iteration 180
+Processed 10740 / 28037
+Accuracy: 43 / 60
+Training Loss: 2.0409994
+
+
+======================================
+Epoch 0 Iteration 185
+Processed 11040 / 28037
+Accuracy: 40 / 60
+Training Loss: 2.1656318
+
+
+======================================
+Epoch 0 Iteration 190
+Processed 11340 / 28037
+Accuracy: 40 / 60
+Training Loss: 2.143526
+
+
+======================================
+Epoch 0 Iteration 195
+Processed 11640 / 28037
+Accuracy: 40 / 60
+Training Loss: 2.084933
+
+
+======================================
+Epoch 0 Iteration 200
+Processed 11940 / 28037
+Accuracy: 43 / 60
+Training Loss: 2.014262
+
+
+======================================
+Epoch 0 Iteration 205
+Processed 12240 / 28037
+Accuracy: 48 / 60
+Training Loss: 2.0781422
+
+
+======================================
+Epoch 0 Iteration 210
+Processed 12540 / 28037
+Accuracy: 34 / 60
+Training Loss: 2.0158432
+
+
+======================================
+Epoch 0 Iteration 215
+Processed 12840 / 28037
+Accuracy: 39 / 60
+Training Loss: 2.0303524
+
+
+======================================
+Epoch 0 Iteration 220
+Processed 13140 / 28037
+Accuracy: 40 / 60
+Training Loss: 2.0458665
+
+
+======================================
+Epoch 0 Iteration 225
+Processed 13440 / 28037
+Accuracy: 37 / 60
+Training Loss: 2.114159
+
+
+======================================
+Epoch 0 Iteration 230
+Processed 13740 / 28037
+Accuracy: 40 / 60
+Training Loss: 2.0801036
+
+
+======================================
+Epoch 0 Iteration 235
+Processed 14040 / 28037
+Accuracy: 40 / 60
+Training Loss: 2.0090597
+
+
+======================================
+Epoch 0 Iteration 240
+Processed 14340 / 28037
+Accuracy: 43 / 60
+Training Loss: 1.8922336
+
+
+======================================
+Epoch 0 Iteration 245
+Processed 14640 / 28037
+Accuracy: 42 / 60
+Training Loss: 1.9226176
+
+
+======================================
+Epoch 0 Iteration 250
+Processed 14940 / 28037
+Accuracy: 37 / 60
+Training Loss: 2.1636596
+
+
+======================================
+Epoch 0 Iteration 255
+Processed 15240 / 28037
+Accuracy: 37 / 60
+Training Loss: 2.0632796
+
+
+======================================
+Epoch 0 Iteration 260
+Processed 15540 / 28037
+Accuracy: 40 / 60
+Training Loss: 2.0271912
+
+
+======================================
+Epoch 0 Iteration 265
+Processed 15840 / 28037
+Accuracy: 38 / 60
+Training Loss: 2.0527732
+
+
+======================================
+Epoch 0 Iteration 270
+Processed 16140 / 28037
+Accuracy: 39 / 60
+Training Loss: 1.9976723
+
+
+======================================
+Epoch 0 Iteration 275
+Processed 16440 / 28037
+Accuracy: 41 / 60
+Training Loss: 1.9526876
+
+
+======================================
+Epoch 0 Iteration 280
+Processed 16740 / 28037
+Accuracy: 42 / 60
+Training Loss: 1.7629757
+
+
+======================================
+Epoch 0 Iteration 285
+Processed 17040 / 28037
+Accuracy: 39 / 60
+Training Loss: 1.835714
+
+
+======================================
+Epoch 0 Iteration 290
+Processed 17340 / 28037
+Accuracy: 40 / 60
+Training Loss: 1.9858364
+
+
+======================================
+Epoch 0 Iteration 295
+Processed 17640 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.7714456
+
+
+======================================
+Epoch 0 Iteration 300
+Processed 17940 / 28037
+Accuracy: 39 / 60
+Training Loss: 1.9034879
+
+
+======================================
+Epoch 0 Iteration 305
+Processed 18240 / 28037
+Accuracy: 42 / 60
+Training Loss: 1.806661
+
+
+======================================
+Epoch 0 Iteration 310
+Processed 18540 / 28037
+Accuracy: 41 / 60
+Training Loss: 1.8954042
+
+
+======================================
+Epoch 0 Iteration 315
+Processed 18840 / 28037
+Accuracy: 42 / 60
+Training Loss: 1.8300108
+
+
+======================================
+Epoch 0 Iteration 320
+Processed 19140 / 28037
+Accuracy: 42 / 60
+Training Loss: 1.7265431
+
+
+======================================
+Epoch 0 Iteration 325
+Processed 19440 / 28037
+Accuracy: 39 / 60
+Training Loss: 1.7131279
+
+
+======================================
+Epoch 0 Iteration 330
+Processed 19740 / 28037
+Accuracy: 34 / 60
+Training Loss: 2.1015055
+
+
+======================================
+Epoch 0 Iteration 335
+Processed 20040 / 28037
+Accuracy: 44 / 60
+Training Loss: 1.7903469
+
+
+======================================
+Epoch 0 Iteration 340
+Processed 20340 / 28037
+Accuracy: 46 / 60
+Training Loss: 1.8413842
+
+
+======================================
+Epoch 0 Iteration 345
+Processed 20640 / 28037
+Accuracy: 42 / 60
+Training Loss: 1.7921975
+
+
+======================================
+Epoch 0 Iteration 350
+Processed 20940 / 28037
+Accuracy: 37 / 60
+Training Loss: 1.8096616
+
+
+======================================
+Epoch 0 Iteration 355
+Processed 21240 / 28037
+Accuracy: 45 / 60
+Training Loss: 1.7747164
+
+
+======================================
+Epoch 0 Iteration 360
+Processed 21540 / 28037
+Accuracy: 40 / 60
+Training Loss: 1.8630993
+
+
+======================================
+Epoch 0 Iteration 365
+Processed 21840 / 28037
+Accuracy: 41 / 60
+Training Loss: 1.972784
+
+
+======================================
+Epoch 0 Iteration 370
+Processed 22140 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.9530594
+
+
+======================================
+Epoch 0 Iteration 375
+Processed 22440 / 28037
+Accuracy: 36 / 60
+Training Loss: 1.8072656
+
+
+======================================
+Epoch 0 Iteration 380
+Processed 22740 / 28037
+Accuracy: 36 / 60
+Training Loss: 1.9854915
+
+
+======================================
+Epoch 0 Iteration 385
+Processed 23040 / 28037
+Accuracy: 42 / 60
+Training Loss: 2.059283
+
+
+======================================
+Epoch 0 Iteration 390
+Processed 23340 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.734366
+
+
+======================================
+Epoch 0 Iteration 395
+Processed 23640 / 28037
+Accuracy: 43 / 60
+Training Loss: 1.6638038
+
+
+======================================
+Epoch 0 Iteration 400
+Processed 23940 / 28037
+Accuracy: 41 / 60
+Training Loss: 1.6338558
+
+
+======================================
+Epoch 0 Iteration 405
+Processed 24240 / 28037
+Accuracy: 39 / 60
+Training Loss: 1.7070049
+
+
+======================================
+Epoch 0 Iteration 410
+Processed 24540 / 28037
+Accuracy: 37 / 60
+Training Loss: 1.6729901
+
+
+======================================
+Epoch 0 Iteration 415
+Processed 24840 / 28037
+Accuracy: 37 / 60
+Training Loss: 1.864212
+
+
+======================================
+Epoch 0 Iteration 420
+Processed 25140 / 28037
+Accuracy: 41 / 60
+Training Loss: 1.9256493
+
+
+======================================
+Epoch 0 Iteration 425
+Processed 25440 / 28037
+Accuracy: 46 / 60
+Training Loss: 1.6952333
+
+
+======================================
+Epoch 0 Iteration 430
+Processed 25740 / 28037
+Accuracy: 40 / 60
+Training Loss: 1.7786293
+
+
+======================================
+Epoch 0 Iteration 435
+Processed 26040 / 28037
+Accuracy: 41 / 60
+Training Loss: 1.6859
+
+
+======================================
+Epoch 0 Iteration 440
+Processed 26340 / 28037
+Accuracy: 42 / 60
+Training Loss: 1.768317
+
+
+======================================
+Epoch 0 Iteration 445
+Processed 26640 / 28037
+Accuracy: 43 / 60
+Training Loss: 1.8105838
+
+
+======================================
+Epoch 0 Iteration 450
+Processed 26940 / 28037
+Accuracy: 41 / 60
+Training Loss: 1.7476156
+
+
+======================================
+Epoch 0 Iteration 455
+Processed 27240 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.4832342
+
+
+======================================
+Epoch 0 Iteration 460
+Processed 27540 / 28037
+Accuracy: 45 / 60
+Training Loss: 1.6434553
+
+
+======================================
+Epoch 0 Iteration 465
+Processed 27840 / 28037
+Accuracy: 44 / 60
+Training Loss: 1.5810798
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+epoch:0	acc:0.6700389105058365
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+======================================
+Epoch 1 Iteration 470
+Processed 60 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.5925543
+
+
+======================================
+Epoch 1 Iteration 475
+Processed 360 / 28037
+Accuracy: 45 / 60
+Training Loss: 1.4508346
+
+
+======================================
+Epoch 1 Iteration 480
+Processed 660 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.286911
+
+
+======================================
+Epoch 1 Iteration 485
+Processed 960 / 28037
+Accuracy: 42 / 60
+Training Loss: 1.1951975
+
+
+======================================
+Epoch 1 Iteration 490
+Processed 1260 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.3057935
+
+
+======================================
+Epoch 1 Iteration 495
+Processed 1560 / 28037
+Accuracy: 43 / 60
+Training Loss: 1.4515009
+
+
+======================================
+Epoch 1 Iteration 500
+Processed 1860 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.4742097
+
+
+======================================
+Epoch 1 Iteration 505
+Processed 2160 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.1711174
+
+
+======================================
+Epoch 1 Iteration 510
+Processed 2460 / 28037
+Accuracy: 45 / 60
+Training Loss: 1.3722336
+
+
+======================================
+Epoch 1 Iteration 515
+Processed 2760 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.3687549
+
+
+======================================
+Epoch 1 Iteration 520
+Processed 3060 / 28037
+Accuracy: 46 / 60
+Training Loss: 1.3442824
+
+
+======================================
+Epoch 1 Iteration 525
+Processed 3360 / 28037
+Accuracy: 45 / 60
+Training Loss: 1.1708434
+
+
+======================================
+Epoch 1 Iteration 530
+Processed 3660 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.2417023
+
+
+======================================
+Epoch 1 Iteration 535
+Processed 3960 / 28037
+Accuracy: 46 / 60
+Training Loss: 1.3673077
+
+
+======================================
+Epoch 1 Iteration 540
+Processed 4260 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.3925583
+
+
+======================================
+Epoch 1 Iteration 545
+Processed 4560 / 28037
+Accuracy: 44 / 60
+Training Loss: 1.3803622
+
+
+======================================
+Epoch 1 Iteration 550
+Processed 4860 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.311495
+
+
+======================================
+Epoch 1 Iteration 555
+Processed 5160 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.3969743
+
+
+======================================
+Epoch 1 Iteration 560
+Processed 5460 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.3565667
+
+
+======================================
+Epoch 1 Iteration 565
+Processed 5760 / 28037
+Accuracy: 42 / 60
+Training Loss: 1.397332
+
+
+======================================
+Epoch 1 Iteration 570
+Processed 6060 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.3380673
+
+
+======================================
+Epoch 1 Iteration 575
+Processed 6360 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.4229484
+
+
+======================================
+Epoch 1 Iteration 580
+Processed 6660 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.2814405
+
+
+======================================
+Epoch 1 Iteration 585
+Processed 6960 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.1764944
+
+
+======================================
+Epoch 1 Iteration 590
+Processed 7260 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.3758299
+
+
+======================================
+Epoch 1 Iteration 595
+Processed 7560 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.2670472
+
+
+======================================
+Epoch 1 Iteration 600
+Processed 7860 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.2826419
+
+
+======================================
+Epoch 1 Iteration 605
+Processed 8160 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.2804601
+
+
+======================================
+Epoch 1 Iteration 610
+Processed 8460 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.2119375
+
+
+======================================
+Epoch 1 Iteration 615
+Processed 8760 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.198314
+
+
+======================================
+Epoch 1 Iteration 620
+Processed 9060 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.2222036
+
+
+======================================
+Epoch 1 Iteration 625
+Processed 9360 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.3624941
+
+
+======================================
+Epoch 1 Iteration 630
+Processed 9660 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.2062654
+
+
+======================================
+Epoch 1 Iteration 635
+Processed 9960 / 28037
+Accuracy: 46 / 60
+Training Loss: 1.3178198
+
+
+======================================
+Epoch 1 Iteration 640
+Processed 10260 / 28037
+Accuracy: 53 / 60
+Training Loss: 1.2996254
+
+
+======================================
+Epoch 1 Iteration 645
+Processed 10560 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.2685053
+
+
+======================================
+Epoch 1 Iteration 650
+Processed 10860 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.3709595
+
+
+======================================
+Epoch 1 Iteration 655
+Processed 11160 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.4456213
+
+
+======================================
+Epoch 1 Iteration 660
+Processed 11460 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.4001129
+
+
+======================================
+Epoch 1 Iteration 665
+Processed 11760 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.1832695
+
+
+======================================
+Epoch 1 Iteration 670
+Processed 12060 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.2975376
+
+
+======================================
+Epoch 1 Iteration 675
+Processed 12360 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.3778219
+
+
+======================================
+Epoch 1 Iteration 680
+Processed 12660 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.3322957
+
+
+======================================
+Epoch 1 Iteration 685
+Processed 12960 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.3688297
+
+
+======================================
+Epoch 1 Iteration 690
+Processed 13260 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.43848
+
+
+======================================
+Epoch 1 Iteration 695
+Processed 13560 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.3793215
+
+
+======================================
+Epoch 1 Iteration 700
+Processed 13860 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.2563503
+
+
+======================================
+Epoch 1 Iteration 705
+Processed 14160 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.3985538
+
+
+======================================
+Epoch 1 Iteration 710
+Processed 14460 / 28037
+Accuracy: 41 / 60
+Training Loss: 1.4249299
+
+
+======================================
+Epoch 1 Iteration 715
+Processed 14760 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.3044859
+
+
+======================================
+Epoch 1 Iteration 720
+Processed 15060 / 28037
+Accuracy: 54 / 60
+Training Loss: 1.2478428
+
+
+======================================
+Epoch 1 Iteration 725
+Processed 15360 / 28037
+Accuracy: 45 / 60
+Training Loss: 1.3600519
+
+
+======================================
+Epoch 1 Iteration 730
+Processed 15660 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.205775
+
+
+======================================
+Epoch 1 Iteration 735
+Processed 15960 / 28037
+Accuracy: 46 / 60
+Training Loss: 1.3488046
+
+
+======================================
+Epoch 1 Iteration 740
+Processed 16260 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.1551212
+
+
+======================================
+Epoch 1 Iteration 745
+Processed 16560 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.2499247
+
+
+======================================
+Epoch 1 Iteration 750
+Processed 16860 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.3516642
+
+
+======================================
+Epoch 1 Iteration 755
+Processed 17160 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.3433319
+
+
+======================================
+Epoch 1 Iteration 760
+Processed 17460 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.1611887
+
+
+======================================
+Epoch 1 Iteration 765
+Processed 17760 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.4778938
+
+
+======================================
+Epoch 1 Iteration 770
+Processed 18060 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.3616602
+
+
+======================================
+Epoch 1 Iteration 775
+Processed 18360 / 28037
+Accuracy: 44 / 60
+Training Loss: 1.236717
+
+
+======================================
+Epoch 1 Iteration 780
+Processed 18660 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.271135
+
+
+======================================
+Epoch 1 Iteration 785
+Processed 18960 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.2977191
+
+
+======================================
+Epoch 1 Iteration 790
+Processed 19260 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.2727311
+
+
+======================================
+Epoch 1 Iteration 795
+Processed 19560 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.1464125
+
+
+======================================
+Epoch 1 Iteration 800
+Processed 19860 / 28037
+Accuracy: 43 / 60
+Training Loss: 1.3161478
+
+
+======================================
+Epoch 1 Iteration 805
+Processed 20160 / 28037
+Accuracy: 45 / 60
+Training Loss: 1.3021163
+
+
+======================================
+Epoch 1 Iteration 810
+Processed 20460 / 28037
+Accuracy: 46 / 60
+Training Loss: 1.1900523
+
+
+======================================
+Epoch 1 Iteration 815
+Processed 20760 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.2508414
+
+
+======================================
+Epoch 1 Iteration 820
+Processed 21060 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.4366059
+
+
+======================================
+Epoch 1 Iteration 825
+Processed 21360 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.3680859
+
+
+======================================
+Epoch 1 Iteration 830
+Processed 21660 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.1949693
+
+
+======================================
+Epoch 1 Iteration 835
+Processed 21960 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.3514227
+
+
+======================================
+Epoch 1 Iteration 840
+Processed 22260 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.2274067
+
+
+======================================
+Epoch 1 Iteration 845
+Processed 22560 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.3313427
+
+
+======================================
+Epoch 1 Iteration 850
+Processed 22860 / 28037
+Accuracy: 53 / 60
+Training Loss: 1.2409953
+
+
+======================================
+Epoch 1 Iteration 855
+Processed 23160 / 28037
+Accuracy: 46 / 60
+Training Loss: 1.4536426
+
+
+======================================
+Epoch 1 Iteration 860
+Processed 23460 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.3674523
+
+
+======================================
+Epoch 1 Iteration 865
+Processed 23760 / 28037
+Accuracy: 38 / 60
+Training Loss: 1.4276824
+
+
+======================================
+Epoch 1 Iteration 870
+Processed 24060 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.2364448
+
+
+======================================
+Epoch 1 Iteration 875
+Processed 24360 / 28037
+Accuracy: 53 / 60
+Training Loss: 1.1998882
+
+
+======================================
+Epoch 1 Iteration 880
+Processed 24660 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.4547144
+
+
+======================================
+Epoch 1 Iteration 885
+Processed 24960 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.2718989
+
+
+======================================
+Epoch 1 Iteration 890
+Processed 25260 / 28037
+Accuracy: 46 / 60
+Training Loss: 1.1974838
+
+
+======================================
+Epoch 1 Iteration 895
+Processed 25560 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.3355036
+
+
+======================================
+Epoch 1 Iteration 900
+Processed 25860 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.3503916
+
+
+======================================
+Epoch 1 Iteration 905
+Processed 26160 / 28037
+Accuracy: 45 / 60
+Training Loss: 1.3344061
+
+
+======================================
+Epoch 1 Iteration 910
+Processed 26460 / 28037
+Accuracy: 45 / 60
+Training Loss: 1.3449907
+
+
+======================================
+Epoch 1 Iteration 915
+Processed 26760 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.3657854
+
+
+======================================
+Epoch 1 Iteration 920
+Processed 27060 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.2809951
+
+
+======================================
+Epoch 1 Iteration 925
+Processed 27360 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.2144872
+
+
+======================================
+Epoch 1 Iteration 930
+Processed 27660 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.2840681
+
+
+======================================
+Epoch 1 Iteration 935
+Processed 27960 / 28037
+Accuracy: 56 / 60
+Training Loss: 1.2225333
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+epoch:1	acc:0.7443579766536965
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+======================================
+Epoch 2 Iteration 940
+Processed 180 / 28037
+Accuracy: 54 / 60
+Training Loss: 1.0007149
+
+
+======================================
+Epoch 2 Iteration 945
+Processed 480 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.9845996
+
+
+======================================
+Epoch 2 Iteration 950
+Processed 780 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.9901632
+
+
+======================================
+Epoch 2 Iteration 955
+Processed 1080 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.0603375
+
+
+======================================
+Epoch 2 Iteration 960
+Processed 1380 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.9689628
+
+
+======================================
+Epoch 2 Iteration 965
+Processed 1680 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.95189553
+
+
+======================================
+Epoch 2 Iteration 970
+Processed 1980 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.0701513
+
+
+======================================
+Epoch 2 Iteration 975
+Processed 2280 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.0075107
+
+
+======================================
+Epoch 2 Iteration 980
+Processed 2580 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.92997587
+
+
+======================================
+Epoch 2 Iteration 985
+Processed 2880 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.95696276
+
+
+======================================
+Epoch 2 Iteration 990
+Processed 3180 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.9226645
+
+
+======================================
+Epoch 2 Iteration 995
+Processed 3480 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.9162577
+
+
+======================================
+Epoch 2 Iteration 1000
+Processed 3780 / 28037
+Accuracy: 46 / 60
+Training Loss: 0.9673656
+
+
+======================================
+Epoch 2 Iteration 1005
+Processed 4080 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.0840032
+
+
+======================================
+Epoch 2 Iteration 1010
+Processed 4380 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.0649579
+
+
+======================================
+Epoch 2 Iteration 1015
+Processed 4680 / 28037
+Accuracy: 50 / 60
+Training Loss: 0.9719135
+
+
+======================================
+Epoch 2 Iteration 1020
+Processed 4980 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.8636864
+
+
+======================================
+Epoch 2 Iteration 1025
+Processed 5280 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.8737715
+
+
+======================================
+Epoch 2 Iteration 1030
+Processed 5580 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.86550295
+
+
+======================================
+Epoch 2 Iteration 1035
+Processed 5880 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.0928762
+
+
+======================================
+Epoch 2 Iteration 1040
+Processed 6180 / 28037
+Accuracy: 54 / 60
+Training Loss: 1.0711253
+
+
+======================================
+Epoch 2 Iteration 1045
+Processed 6480 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.0804371
+
+
+======================================
+Epoch 2 Iteration 1050
+Processed 6780 / 28037
+Accuracy: 55 / 60
+Training Loss: 1.0023656
+
+
+======================================
+Epoch 2 Iteration 1055
+Processed 7080 / 28037
+Accuracy: 51 / 60
+Training Loss: 0.95422965
+
+
+======================================
+Epoch 2 Iteration 1060
+Processed 7380 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.9802502
+
+
+======================================
+Epoch 2 Iteration 1065
+Processed 7680 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.90169704
+
+
+======================================
+Epoch 2 Iteration 1070
+Processed 7980 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.9769638
+
+
+======================================
+Epoch 2 Iteration 1075
+Processed 8280 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.93890095
+
+
+======================================
+Epoch 2 Iteration 1080
+Processed 8580 / 28037
+Accuracy: 49 / 60
+Training Loss: 0.90213716
+
+
+======================================
+Epoch 2 Iteration 1085
+Processed 8880 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.9995899
+
+
+======================================
+Epoch 2 Iteration 1090
+Processed 9180 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.0499849
+
+
+======================================
+Epoch 2 Iteration 1095
+Processed 9480 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.0985472
+
+
+======================================
+Epoch 2 Iteration 1100
+Processed 9780 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.0131016
+
+
+======================================
+Epoch 2 Iteration 1105
+Processed 10080 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.98735255
+
+
+======================================
+Epoch 2 Iteration 1110
+Processed 10380 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.098066
+
+
+======================================
+Epoch 2 Iteration 1115
+Processed 10680 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.0348364
+
+
+======================================
+Epoch 2 Iteration 1120
+Processed 10980 / 28037
+Accuracy: 53 / 60
+Training Loss: 1.1675364
+
+
+======================================
+Epoch 2 Iteration 1125
+Processed 11280 / 28037
+Accuracy: 51 / 60
+Training Loss: 0.9887188
+
+
+======================================
+Epoch 2 Iteration 1130
+Processed 11580 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.1299086
+
+
+======================================
+Epoch 2 Iteration 1135
+Processed 11880 / 28037
+Accuracy: 58 / 60
+Training Loss: 1.036653
+
+
+======================================
+Epoch 2 Iteration 1140
+Processed 12180 / 28037
+Accuracy: 53 / 60
+Training Loss: 1.0621829
+
+
+======================================
+Epoch 2 Iteration 1145
+Processed 12480 / 28037
+Accuracy: 53 / 60
+Training Loss: 1.0243056
+
+
+======================================
+Epoch 2 Iteration 1150
+Processed 12780 / 28037
+Accuracy: 53 / 60
+Training Loss: 1.1276314
+
+
+======================================
+Epoch 2 Iteration 1155
+Processed 13080 / 28037
+Accuracy: 54 / 60
+Training Loss: 1.1207078
+
+
+======================================
+Epoch 2 Iteration 1160
+Processed 13380 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.9295295
+
+
+======================================
+Epoch 2 Iteration 1165
+Processed 13680 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.0358046
+
+
+======================================
+Epoch 2 Iteration 1170
+Processed 13980 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.91164744
+
+
+======================================
+Epoch 2 Iteration 1175
+Processed 14280 / 28037
+Accuracy: 55 / 60
+Training Loss: 1.086262
+
+
+======================================
+Epoch 2 Iteration 1180
+Processed 14580 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.9621053
+
+
+======================================
+Epoch 2 Iteration 1185
+Processed 14880 / 28037
+Accuracy: 55 / 60
+Training Loss: 1.0044936
+
+
+======================================
+Epoch 2 Iteration 1190
+Processed 15180 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.0706778
+
+
+======================================
+Epoch 2 Iteration 1195
+Processed 15480 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.0324126
+
+
+======================================
+Epoch 2 Iteration 1200
+Processed 15780 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.043539
+
+
+======================================
+Epoch 2 Iteration 1205
+Processed 16080 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.1029713
+
+
+======================================
+Epoch 2 Iteration 1210
+Processed 16380 / 28037
+Accuracy: 54 / 60
+Training Loss: 1.0067785
+
+
+======================================
+Epoch 2 Iteration 1215
+Processed 16680 / 28037
+Accuracy: 48 / 60
+Training Loss: 0.99193144
+
+
+======================================
+Epoch 2 Iteration 1220
+Processed 16980 / 28037
+Accuracy: 50 / 60
+Training Loss: 0.9925154
+
+
+======================================
+Epoch 2 Iteration 1225
+Processed 17280 / 28037
+Accuracy: 57 / 60
+Training Loss: 1.0035207
+
+
+======================================
+Epoch 2 Iteration 1230
+Processed 17580 / 28037
+Accuracy: 45 / 60
+Training Loss: 1.0808046
+
+
+======================================
+Epoch 2 Iteration 1235
+Processed 17880 / 28037
+Accuracy: 45 / 60
+Training Loss: 1.0143325
+
+
+======================================
+Epoch 2 Iteration 1240
+Processed 18180 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.0255852
+
+
+======================================
+Epoch 2 Iteration 1245
+Processed 18480 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.0581557
+
+
+======================================
+Epoch 2 Iteration 1250
+Processed 18780 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.133457
+
+
+======================================
+Epoch 2 Iteration 1255
+Processed 19080 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.0519323
+
+
+======================================
+Epoch 2 Iteration 1260
+Processed 19380 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.0823396
+
+
+======================================
+Epoch 2 Iteration 1265
+Processed 19680 / 28037
+Accuracy: 53 / 60
+Training Loss: 1.0071615
+
+
+======================================
+Epoch 2 Iteration 1270
+Processed 19980 / 28037
+Accuracy: 54 / 60
+Training Loss: 1.0151004
+
+
+======================================
+Epoch 2 Iteration 1275
+Processed 20280 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.9863847
+
+
+======================================
+Epoch 2 Iteration 1280
+Processed 20580 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.1618693
+
+
+======================================
+Epoch 2 Iteration 1285
+Processed 20880 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.0390968
+
+
+======================================
+Epoch 2 Iteration 1290
+Processed 21180 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.1611208
+
+
+======================================
+Epoch 2 Iteration 1295
+Processed 21480 / 28037
+Accuracy: 54 / 60
+Training Loss: 1.0450271
+
+
+======================================
+Epoch 2 Iteration 1300
+Processed 21780 / 28037
+Accuracy: 54 / 60
+Training Loss: 1.0100605
+
+
+======================================
+Epoch 2 Iteration 1305
+Processed 22080 / 28037
+Accuracy: 52 / 60
+Training Loss: 1.0716257
+
+
+======================================
+Epoch 2 Iteration 1310
+Processed 22380 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.0317491
+
+
+======================================
+Epoch 2 Iteration 1315
+Processed 22680 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.029197
+
+
+======================================
+Epoch 2 Iteration 1320
+Processed 22980 / 28037
+Accuracy: 53 / 60
+Training Loss: 1.2190797
+
+
+======================================
+Epoch 2 Iteration 1325
+Processed 23280 / 28037
+Accuracy: 46 / 60
+Training Loss: 1.0300697
+
+
+======================================
+Epoch 2 Iteration 1330
+Processed 23580 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.9781598
+
+
+======================================
+Epoch 2 Iteration 1335
+Processed 23880 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.93123055
+
+
+======================================
+Epoch 2 Iteration 1340
+Processed 24180 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.9752134
+
+
+======================================
+Epoch 2 Iteration 1345
+Processed 24480 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.042665
+
+
+======================================
+Epoch 2 Iteration 1350
+Processed 24780 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.0141145
+
+
+======================================
+Epoch 2 Iteration 1355
+Processed 25080 / 28037
+Accuracy: 50 / 60
+Training Loss: 0.99127024
+
+
+======================================
+Epoch 2 Iteration 1360
+Processed 25380 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.88027745
+
+
+======================================
+Epoch 2 Iteration 1365
+Processed 25680 / 28037
+Accuracy: 44 / 60
+Training Loss: 1.0432287
+
+
+======================================
+Epoch 2 Iteration 1370
+Processed 25980 / 28037
+Accuracy: 49 / 60
+Training Loss: 1.1298703
+
+
+======================================
+Epoch 2 Iteration 1375
+Processed 26280 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.283089
+
+
+======================================
+Epoch 2 Iteration 1380
+Processed 26580 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.97349435
+
+
+======================================
+Epoch 2 Iteration 1385
+Processed 26880 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.0813482
+
+
+======================================
+Epoch 2 Iteration 1390
+Processed 27180 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.9693967
+
+
+======================================
+Epoch 2 Iteration 1395
+Processed 27480 / 28037
+Accuracy: 48 / 60
+Training Loss: 1.0734727
+
+
+======================================
+Epoch 2 Iteration 1400
+Processed 27780 / 28037
+Accuracy: 47 / 60
+Training Loss: 1.1906077
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+epoch:2	acc:0.7365758754863814
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+======================================
+Epoch 3 Iteration 1405
+Processed 0 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.9381693
+
+
+======================================
+Epoch 3 Iteration 1410
+Processed 300 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.82411367
+
+
+======================================
+Epoch 3 Iteration 1415
+Processed 600 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.8036994
+
+
+======================================
+Epoch 3 Iteration 1420
+Processed 900 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.7543837
+
+
+======================================
+Epoch 3 Iteration 1425
+Processed 1200 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.82553464
+
+
+======================================
+Epoch 3 Iteration 1430
+Processed 1500 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.77727205
+
+
+======================================
+Epoch 3 Iteration 1435
+Processed 1800 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.9309524
+
+
+======================================
+Epoch 3 Iteration 1440
+Processed 2100 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.79686564
+
+
+======================================
+Epoch 3 Iteration 1445
+Processed 2400 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.74357885
+
+
+======================================
+Epoch 3 Iteration 1450
+Processed 2700 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.79384196
+
+
+======================================
+Epoch 3 Iteration 1455
+Processed 3000 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.729107
+
+
+======================================
+Epoch 3 Iteration 1460
+Processed 3300 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.89292157
+
+
+======================================
+Epoch 3 Iteration 1465
+Processed 3600 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.83589935
+
+
+======================================
+Epoch 3 Iteration 1470
+Processed 3900 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.80893296
+
+
+======================================
+Epoch 3 Iteration 1475
+Processed 4200 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.8497249
+
+
+======================================
+Epoch 3 Iteration 1480
+Processed 4500 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.7428328
+
+
+======================================
+Epoch 3 Iteration 1485
+Processed 4800 / 28037
+Accuracy: 49 / 60
+Training Loss: 0.82842684
+
+
+======================================
+Epoch 3 Iteration 1490
+Processed 5100 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.71196544
+
+
+======================================
+Epoch 3 Iteration 1495
+Processed 5400 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.86505735
+
+
+======================================
+Epoch 3 Iteration 1500
+Processed 5700 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.8160283
+
+
+======================================
+Epoch 3 Iteration 1505
+Processed 6000 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.9049017
+
+
+======================================
+Epoch 3 Iteration 1510
+Processed 6300 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.77628714
+
+
+======================================
+Epoch 3 Iteration 1515
+Processed 6600 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.8274288
+
+
+======================================
+Epoch 3 Iteration 1520
+Processed 6900 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.88843954
+
+
+======================================
+Epoch 3 Iteration 1525
+Processed 7200 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.8670372
+
+
+======================================
+Epoch 3 Iteration 1530
+Processed 7500 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.8056715
+
+
+======================================
+Epoch 3 Iteration 1535
+Processed 7800 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.8246209
+
+
+======================================
+Epoch 3 Iteration 1540
+Processed 8100 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.8552669
+
+
+======================================
+Epoch 3 Iteration 1545
+Processed 8400 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.77741194
+
+
+======================================
+Epoch 3 Iteration 1550
+Processed 8700 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.85892993
+
+
+======================================
+Epoch 3 Iteration 1555
+Processed 9000 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.86098737
+
+
+======================================
+Epoch 3 Iteration 1560
+Processed 9300 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.84224206
+
+
+======================================
+Epoch 3 Iteration 1565
+Processed 9600 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.79480064
+
+
+======================================
+Epoch 3 Iteration 1570
+Processed 9900 / 28037
+Accuracy: 51 / 60
+Training Loss: 0.8588217
+
+
+======================================
+Epoch 3 Iteration 1575
+Processed 10200 / 28037
+Accuracy: 50 / 60
+Training Loss: 0.9211713
+
+
+======================================
+Epoch 3 Iteration 1580
+Processed 10500 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.896381
+
+
+======================================
+Epoch 3 Iteration 1585
+Processed 10800 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.77460766
+
+
+======================================
+Epoch 3 Iteration 1590
+Processed 11100 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.89551544
+
+
+======================================
+Epoch 3 Iteration 1595
+Processed 11400 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.86609715
+
+
+======================================
+Epoch 3 Iteration 1600
+Processed 11700 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.802348
+
+
+======================================
+Epoch 3 Iteration 1605
+Processed 12000 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.8890039
+
+
+======================================
+Epoch 3 Iteration 1610
+Processed 12300 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.9152295
+
+
+======================================
+Epoch 3 Iteration 1615
+Processed 12600 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.85533506
+
+
+======================================
+Epoch 3 Iteration 1620
+Processed 12900 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.8490526
+
+
+======================================
+Epoch 3 Iteration 1625
+Processed 13200 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.80496377
+
+
+======================================
+Epoch 3 Iteration 1630
+Processed 13500 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.7900894
+
+
+======================================
+Epoch 3 Iteration 1635
+Processed 13800 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.8408677
+
+
+======================================
+Epoch 3 Iteration 1640
+Processed 14100 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.8455154
+
+
+======================================
+Epoch 3 Iteration 1645
+Processed 14400 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.8641715
+
+
+======================================
+Epoch 3 Iteration 1650
+Processed 14700 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.9206091
+
+
+======================================
+Epoch 3 Iteration 1655
+Processed 15000 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.80336714
+
+
+======================================
+Epoch 3 Iteration 1660
+Processed 15300 / 28037
+Accuracy: 51 / 60
+Training Loss: 0.8722187
+
+
+======================================
+Epoch 3 Iteration 1665
+Processed 15600 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.85641927
+
+
+======================================
+Epoch 3 Iteration 1670
+Processed 15900 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.88089466
+
+
+======================================
+Epoch 3 Iteration 1675
+Processed 16200 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.7284839
+
+
+======================================
+Epoch 3 Iteration 1680
+Processed 16500 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.823222
+
+
+======================================
+Epoch 3 Iteration 1685
+Processed 16800 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.8078207
+
+
+======================================
+Epoch 3 Iteration 1690
+Processed 17100 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.8337703
+
+
+======================================
+Epoch 3 Iteration 1695
+Processed 17400 / 28037
+Accuracy: 50 / 60
+Training Loss: 0.8317941
+
+
+======================================
+Epoch 3 Iteration 1700
+Processed 17700 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.86841774
+
+
+======================================
+Epoch 3 Iteration 1705
+Processed 18000 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.8805318
+
+
+======================================
+Epoch 3 Iteration 1710
+Processed 18300 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.8617557
+
+
+======================================
+Epoch 3 Iteration 1715
+Processed 18600 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.7616147
+
+
+======================================
+Epoch 3 Iteration 1720
+Processed 18900 / 28037
+Accuracy: 60 / 60
+Training Loss: 0.7853904
+
+
+======================================
+Epoch 3 Iteration 1725
+Processed 19200 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.89119893
+
+
+======================================
+Epoch 3 Iteration 1730
+Processed 19500 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.8163021
+
+
+======================================
+Epoch 3 Iteration 1735
+Processed 19800 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.9882208
+
+
+======================================
+Epoch 3 Iteration 1740
+Processed 20100 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.9147547
+
+
+======================================
+Epoch 3 Iteration 1745
+Processed 20400 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.8307953
+
+
+======================================
+Epoch 3 Iteration 1750
+Processed 20700 / 28037
+Accuracy: 55 / 60
+Training Loss: 1.0033579
+
+
+======================================
+Epoch 3 Iteration 1755
+Processed 21000 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.823347
+
+
+======================================
+Epoch 3 Iteration 1760
+Processed 21300 / 28037
+Accuracy: 55 / 60
+Training Loss: 1.0234197
+
+
+======================================
+Epoch 3 Iteration 1765
+Processed 21600 / 28037
+Accuracy: 50 / 60
+Training Loss: 1.0213287
+
+
+======================================
+Epoch 3 Iteration 1770
+Processed 21900 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.86470443
+
+
+======================================
+Epoch 3 Iteration 1775
+Processed 22200 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.840174
+
+
+======================================
+Epoch 3 Iteration 1780
+Processed 22500 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.84555846
+
+
+======================================
+Epoch 3 Iteration 1785
+Processed 22800 / 28037
+Accuracy: 50 / 60
+Training Loss: 0.8977289
+
+
+======================================
+Epoch 3 Iteration 1790
+Processed 23100 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.863867
+
+
+======================================
+Epoch 3 Iteration 1795
+Processed 23400 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.87878895
+
+
+======================================
+Epoch 3 Iteration 1800
+Processed 23700 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.87356585
+
+
+======================================
+Epoch 3 Iteration 1805
+Processed 24000 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.8851366
+
+
+======================================
+Epoch 3 Iteration 1810
+Processed 24300 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.9081556
+
+
+======================================
+Epoch 3 Iteration 1815
+Processed 24600 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.8125261
+
+
+======================================
+Epoch 3 Iteration 1820
+Processed 24900 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.9676037
+
+
+======================================
+Epoch 3 Iteration 1825
+Processed 25200 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.88396806
+
+
+======================================
+Epoch 3 Iteration 1830
+Processed 25500 / 28037
+Accuracy: 51 / 60
+Training Loss: 1.0387002
+
+
+======================================
+Epoch 3 Iteration 1835
+Processed 25800 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.8504421
+
+
+======================================
+Epoch 3 Iteration 1840
+Processed 26100 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.99101573
+
+
+======================================
+Epoch 3 Iteration 1845
+Processed 26400 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.96433294
+
+
+======================================
+Epoch 3 Iteration 1850
+Processed 26700 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.85877573
+
+
+======================================
+Epoch 3 Iteration 1855
+Processed 27000 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.87041074
+
+
+======================================
+Epoch 3 Iteration 1860
+Processed 27300 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.85523283
+
+
+======================================
+Epoch 3 Iteration 1865
+Processed 27600 / 28037
+Accuracy: 51 / 60
+Training Loss: 0.78716606
+
+
+======================================
+Epoch 3 Iteration 1870
+Processed 27900 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.91266286
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+epoch:3	acc:0.721011673151751
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+======================================
+Epoch 4 Iteration 1875
+Processed 120 / 28037
+Accuracy: 51 / 60
+Training Loss: 0.866172
+
+
+======================================
+Epoch 4 Iteration 1880
+Processed 420 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.81537914
+
+
+======================================
+Epoch 4 Iteration 1885
+Processed 720 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.80388373
+
+
+======================================
+Epoch 4 Iteration 1890
+Processed 1020 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.81838065
+
+
+======================================
+Epoch 4 Iteration 1895
+Processed 1320 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.87434435
+
+
+======================================
+Epoch 4 Iteration 1900
+Processed 1620 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.6934924
+
+
+======================================
+Epoch 4 Iteration 1905
+Processed 1920 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.7263217
+
+
+======================================
+Epoch 4 Iteration 1910
+Processed 2220 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.81222117
+
+
+======================================
+Epoch 4 Iteration 1915
+Processed 2520 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.7327076
+
+
+======================================
+Epoch 4 Iteration 1920
+Processed 2820 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.72790045
+
+
+======================================
+Epoch 4 Iteration 1925
+Processed 3120 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.7500739
+
+
+======================================
+Epoch 4 Iteration 1930
+Processed 3420 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.70285136
+
+
+======================================
+Epoch 4 Iteration 1935
+Processed 3720 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.7145177
+
+
+======================================
+Epoch 4 Iteration 1940
+Processed 4020 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.7008983
+
+
+======================================
+Epoch 4 Iteration 1945
+Processed 4320 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.70324546
+
+
+======================================
+Epoch 4 Iteration 1950
+Processed 4620 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.67500293
+
+
+======================================
+Epoch 4 Iteration 1955
+Processed 4920 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.7322137
+
+
+======================================
+Epoch 4 Iteration 1960
+Processed 5220 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.68270445
+
+
+======================================
+Epoch 4 Iteration 1965
+Processed 5520 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.7134549
+
+
+======================================
+Epoch 4 Iteration 1970
+Processed 5820 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.68111145
+
+
+======================================
+Epoch 4 Iteration 1975
+Processed 6120 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.7199949
+
+
+======================================
+Epoch 4 Iteration 1980
+Processed 6420 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.71348745
+
+
+======================================
+Epoch 4 Iteration 1985
+Processed 6720 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.67462313
+
+
+======================================
+Epoch 4 Iteration 1990
+Processed 7020 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.8243933
+
+
+======================================
+Epoch 4 Iteration 1995
+Processed 7320 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.7906136
+
+
+======================================
+Epoch 4 Iteration 2000
+Processed 7620 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.7828458
+
+
+======================================
+Epoch 4 Iteration 2005
+Processed 7920 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.7033978
+
+
+======================================
+Epoch 4 Iteration 2010
+Processed 8220 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.7401101
+
+
+======================================
+Epoch 4 Iteration 2015
+Processed 8520 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.77863306
+
+
+======================================
+Epoch 4 Iteration 2020
+Processed 8820 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.71919096
+
+
+======================================
+Epoch 4 Iteration 2025
+Processed 9120 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.7846923
+
+
+======================================
+Epoch 4 Iteration 2030
+Processed 9420 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.6680639
+
+
+======================================
+Epoch 4 Iteration 2035
+Processed 9720 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.71528685
+
+
+======================================
+Epoch 4 Iteration 2040
+Processed 10020 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.74956095
+
+
+======================================
+Epoch 4 Iteration 2045
+Processed 10320 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.82546663
+
+
+======================================
+Epoch 4 Iteration 2050
+Processed 10620 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.75910395
+
+
+======================================
+Epoch 4 Iteration 2055
+Processed 10920 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.8005484
+
+
+======================================
+Epoch 4 Iteration 2060
+Processed 11220 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.69883144
+
+
+======================================
+Epoch 4 Iteration 2065
+Processed 11520 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.7799454
+
+
+======================================
+Epoch 4 Iteration 2070
+Processed 11820 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.77807844
+
+
+======================================
+Epoch 4 Iteration 2075
+Processed 12120 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.80041
+
+
+======================================
+Epoch 4 Iteration 2080
+Processed 12420 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.70725
+
+
+======================================
+Epoch 4 Iteration 2085
+Processed 12720 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.77865803
+
+
+======================================
+Epoch 4 Iteration 2090
+Processed 13020 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.7940988
+
+
+======================================
+Epoch 4 Iteration 2095
+Processed 13320 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.73207
+
+
+======================================
+Epoch 4 Iteration 2100
+Processed 13620 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.7728455
+
+
+======================================
+Epoch 4 Iteration 2105
+Processed 13920 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.71586335
+
+
+======================================
+Epoch 4 Iteration 2110
+Processed 14220 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.72376764
+
+
+======================================
+Epoch 4 Iteration 2115
+Processed 14520 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.7097038
+
+
+======================================
+Epoch 4 Iteration 2120
+Processed 14820 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.74629813
+
+
+======================================
+Epoch 4 Iteration 2125
+Processed 15120 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.76773965
+
+
+======================================
+Epoch 4 Iteration 2130
+Processed 15420 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.74022675
+
+
+======================================
+Epoch 4 Iteration 2135
+Processed 15720 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.8194598
+
+
+======================================
+Epoch 4 Iteration 2140
+Processed 16020 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.78980213
+
+
+======================================
+Epoch 4 Iteration 2145
+Processed 16320 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.77541876
+
+
+======================================
+Epoch 4 Iteration 2150
+Processed 16620 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.8106963
+
+
+======================================
+Epoch 4 Iteration 2155
+Processed 16920 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.7709528
+
+
+======================================
+Epoch 4 Iteration 2160
+Processed 17220 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.7726807
+
+
+======================================
+Epoch 4 Iteration 2165
+Processed 17520 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.77914476
+
+
+======================================
+Epoch 4 Iteration 2170
+Processed 17820 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.69433385
+
+
+======================================
+Epoch 4 Iteration 2175
+Processed 18120 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.8185285
+
+
+======================================
+Epoch 4 Iteration 2180
+Processed 18420 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.79812086
+
+
+======================================
+Epoch 4 Iteration 2185
+Processed 18720 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.7739625
+
+
+======================================
+Epoch 4 Iteration 2190
+Processed 19020 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.78141105
+
+
+======================================
+Epoch 4 Iteration 2195
+Processed 19320 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.7233415
+
+
+======================================
+Epoch 4 Iteration 2200
+Processed 19620 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.8628647
+
+
+======================================
+Epoch 4 Iteration 2205
+Processed 19920 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.78740627
+
+
+======================================
+Epoch 4 Iteration 2210
+Processed 20220 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.850911
+
+
+======================================
+Epoch 4 Iteration 2215
+Processed 20520 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.8148365
+
+
+======================================
+Epoch 4 Iteration 2220
+Processed 20820 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.8364704
+
+
+======================================
+Epoch 4 Iteration 2225
+Processed 21120 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.8749752
+
+
+======================================
+Epoch 4 Iteration 2230
+Processed 21420 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.8089674
+
+
+======================================
+Epoch 4 Iteration 2235
+Processed 21720 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.83414525
+
+
+======================================
+Epoch 4 Iteration 2240
+Processed 22020 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.8352143
+
+
+======================================
+Epoch 4 Iteration 2245
+Processed 22320 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.8306448
+
+
+======================================
+Epoch 4 Iteration 2250
+Processed 22620 / 28037
+Accuracy: 51 / 60
+Training Loss: 0.8913593
+
+
+======================================
+Epoch 4 Iteration 2255
+Processed 22920 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.8029558
+
+
+======================================
+Epoch 4 Iteration 2260
+Processed 23220 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.8219393
+
+
+======================================
+Epoch 4 Iteration 2265
+Processed 23520 / 28037
+Accuracy: 52 / 60
+Training Loss: 0.92850274
+
+
+======================================
+Epoch 4 Iteration 2270
+Processed 23820 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.8176745
+
+
+======================================
+Epoch 4 Iteration 2275
+Processed 24120 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.76133287
+
+
+======================================
+Epoch 4 Iteration 2280
+Processed 24420 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.8557051
+
+
+======================================
+Epoch 4 Iteration 2285
+Processed 24720 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.79342353
+
+
+======================================
+Epoch 4 Iteration 2290
+Processed 25020 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.82552373
+
+
+======================================
+Epoch 4 Iteration 2295
+Processed 25320 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.75481206
+
+
+======================================
+Epoch 4 Iteration 2300
+Processed 25620 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.7333847
+
+
+======================================
+Epoch 4 Iteration 2305
+Processed 25920 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.7509416
+
+
+======================================
+Epoch 4 Iteration 2310
+Processed 26220 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.8249224
+
+
+======================================
+Epoch 4 Iteration 2315
+Processed 26520 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.80239993
+
+
+======================================
+Epoch 4 Iteration 2320
+Processed 26820 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.71867716
+
+
+======================================
+Epoch 4 Iteration 2325
+Processed 27120 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.74213064
+
+
+======================================
+Epoch 4 Iteration 2330
+Processed 27420 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.7072012
+
+
+======================================
+Epoch 4 Iteration 2335
+Processed 27720 / 28037
+Accuracy: 53 / 60
+Training Loss: 0.77752435
+
+
+======================================
+Epoch 4 Iteration 2340
+Processed 28020 / 28037
+Accuracy: 15 / 17
+Training Loss: 0.7645447
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+epoch:4	acc:0.7404669260700389
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+======================================
+Epoch 5 Iteration 2345
+Processed 240 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.657287
+
+
+======================================
+Epoch 5 Iteration 2350
+Processed 540 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.7420142
+
+
+======================================
+Epoch 5 Iteration 2355
+Processed 840 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.7581738
+
+
+======================================
+Epoch 5 Iteration 2360
+Processed 1140 / 28037
+Accuracy: 55 / 60
+Training Loss: 0.7253291
+
+
+======================================
+Epoch 5 Iteration 2365
+Processed 1440 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.720333
+
+
+======================================
+Epoch 5 Iteration 2370
+Processed 1740 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.6870767
+
+
+======================================
+Epoch 5 Iteration 2375
+Processed 2040 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.69859946
+
+
+======================================
+Epoch 5 Iteration 2380
+Processed 2340 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.7641171
+
+
+======================================
+Epoch 5 Iteration 2385
+Processed 2640 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.7058873
+
+
+======================================
+Epoch 5 Iteration 2390
+Processed 2940 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.69683063
+
+
+======================================
+Epoch 5 Iteration 2395
+Processed 3240 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.6942123
+
+
+======================================
+Epoch 5 Iteration 2400
+Processed 3540 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.71146715
+
+
+======================================
+Epoch 5 Iteration 2405
+Processed 3840 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.76014864
+
+
+======================================
+Epoch 5 Iteration 2410
+Processed 4140 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.6663547
+
+
+======================================
+Epoch 5 Iteration 2415
+Processed 4440 / 28037
+Accuracy: 60 / 60
+Training Loss: 0.6702477
+
+
+======================================
+Epoch 5 Iteration 2420
+Processed 4740 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.6364049
+
+
+======================================
+Epoch 5 Iteration 2425
+Processed 5040 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.67905724
+
+
+======================================
+Epoch 5 Iteration 2430
+Processed 5340 / 28037
+Accuracy: 60 / 60
+Training Loss: 0.6193849
+
+
+======================================
+Epoch 5 Iteration 2435
+Processed 5640 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.7137014
+
+
+======================================
+Epoch 5 Iteration 2440
+Processed 5940 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.6515344
+
+
+======================================
+Epoch 5 Iteration 2445
+Processed 6240 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.6245893
+
+
+======================================
+Epoch 5 Iteration 2450
+Processed 6540 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.7040663
+
+
+======================================
+Epoch 5 Iteration 2455
+Processed 6840 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.6677004
+
+
+======================================
+Epoch 5 Iteration 2460
+Processed 7140 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.6958434
+
+
+======================================
+Epoch 5 Iteration 2465
+Processed 7440 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.7211086
+
+
+======================================
+Epoch 5 Iteration 2470
+Processed 7740 / 28037
+Accuracy: 57 / 60
+Training Loss: 0.73388565
+
+
+======================================
+Epoch 5 Iteration 2475
+Processed 8040 / 28037
+Accuracy: 59 / 60
+Training Loss: 0.64698285
+
+
+======================================
+Epoch 5 Iteration 2480
+Processed 8340 / 28037
+Accuracy: 56 / 60
+Training Loss: 0.6975428
+
+
+======================================
+Epoch 5 Iteration 2485
+Processed 8640 / 28037
+Accuracy: 58 / 60
+Training Loss: 0.6803568
+
+
+======================================
+Epoch 5 Iteration 2490
+Processed 8940 / 28037
+Accuracy: 54 / 60
+Training Loss: 0.78225195
+
+
+======================================
+Epoch 5 Itera
