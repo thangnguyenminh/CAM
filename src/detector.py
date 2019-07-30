@@ -3,9 +3,10 @@ import numpy as np
 import cPickle
 import ipdb
 class Detector():
-    def __init__(self, weight_file_path, n_labels):
+    def __init__(self, weight_file_path, n_labels, trainable=True):
         self.image_mean = [103.939, 116.779, 123.68]
         self.n_labels = n_labels
+        self.trainable = trainable
 
         with open(weight_file_path) as f:
             self.pretrained_weights = cPickle.load(f)
@@ -63,30 +64,39 @@ class Detector():
 
     def fc_layer(self, bottom, name, create=False):
         shape = bottom.get_shape().as_list()
-        dim = np.prod( shape[1:] )
+        # dim = np.prod( shape[1:] )
+        dim = 1
+        for d in shape[1:]:
+            dim *= d
         x = tf.reshape(bottom, [-1, dim])
 
         cw = self.get_weight(name)
         b = self.get_bias(name)
 
-        if name == "fc6":
-            cw = cw.reshape((4096, 512, 7,7))
-            cw = cw.transpose((2,3,1,0))
-            cw = cw.reshape((25088,4096))
-        else:
-            cw = cw.transpose((1,0))
+        # if name == "fc6":
+        #     cw = cw.reshape((4096, 512, 7,7))
+        #     cw = cw.transpose((2,3,1,0))
+        #     cw = cw.reshape((25088,4096))
+        # else:
+        #     cw = cw.transpose((1,0))
 
-        with tf.variable_scope(name) as scope:
-            cw = tf.get_variable(
-                    "W",
-                    shape=cw.shape,
-                    initializer=tf.constant_initializer(cw))
-            b = tf.get_variable(
-                    "b",
-                    shape=b.shape,
-                    initializer=tf.constant_initializer(b))
+        # with tf.variable_scope(name) as scope:
+        #     cw = tf.get_variable(
+        #             "W",
+        #             shape=cw.shape,
+        #             initializer=tf.constant_initializer(cw))
+        #     b = tf.get_variable(
+        #             "b",
+        #             shape=b.shape,
+        #             initializer=tf.constant_initializer(b))
 
-            fc = tf.nn.bias_add( tf.matmul( x, cw ), b, name=scope)
+        #     fc = tf.nn.bias_add( tf.matmul( x, cw ), b, name=scope)
+        weights = self.get_weight(name)
+        biases = self.get_bias(name)
+
+        # Fully connected layer. Note that the '+' operation automatically
+        # broadcasts the biases.
+        fc = tf.nn.bias_add(tf.matmul(x, weights), biases)
 
         return fc
 
@@ -108,7 +118,7 @@ class Detector():
 
         return fc
 
-    def inference( self, rgb, train=False ):
+    def inference( self, rgb, train_mode=False ):
         rgb *= 255.0
         r, g, b = tf.split(rgb, 3, 3)
         bgr = tf.concat(
@@ -144,6 +154,31 @@ class Detector():
         relu5_1 = self.conv_layer( pool4, "conv5_1")
         relu5_2 = self.conv_layer( relu5_1, "conv5_2")
         relu5_3 = self.conv_layer( relu5_2, "conv5_3")
+        pool5 = tf.nn.max_pool(relu5_3, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1],
+                               padding='SAME', name='pool5')
+
+        fc6 = self.fc_layer(pool5, "fc6")
+        assert fc6.get_shape().as_list()[1:] == [4096]
+        relu6 = tf.nn.relu(fc6)
+
+        if train_mode is not None:
+            relu6 = tf.cond(train_mode, lambda: tf.nn.dropout(relu6, 0.5), lambda: relu6)
+        elif self.trainable:
+            relu6 = tf.nn.dropout(relu6, 0.5)
+
+
+        fc7 = self.fc_layer(relu6, "fc7")
+        relu7 = tf.nn.relu(fc7)
+
+        if train_mode is not None:
+            relu7 = tf.cond(train_mode, lambda: tf.nn.dropout(relu7, 0.5), lambda: relu7)
+        elif self.trainable:
+            relu7 = tf.nn.dropout(relu7, 0.5)
+
+        fc8 = self.fc_layer(relu7, "fc8")
+
+        prob = tf.nn.softmax(fc8, name="prob")
+
         conv6 = self.new_conv_layer( relu5_3, [3,3,512,1024], "conv6") # [filter_height * filter_width * in_channels, output_channels].
         gap = tf.reduce_mean( conv6, [1,2] )
 
