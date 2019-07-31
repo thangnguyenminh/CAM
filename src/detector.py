@@ -73,31 +73,32 @@ class Detector():
         cw = self.get_weight(name)
         b = self.get_bias(name)
 
-        # if name == "fc6":
-        #     cw = cw.reshape((4096, 512, 7,7))
-        #     cw = cw.transpose((2,3,1,0))
-        #     cw = cw.reshape((25088,4096))
-        # else:
-        #     cw = cw.transpose((1,0))
+        if name == "fc6":
+            cw = cw.reshape((4096, 512, 7,7))
+            cw = cw.transpose((2,3,1,0))
+            cw = cw.reshape((25088,4096))
+        else:
+            cw = cw.transpose((1,0))
 
-        # with tf.variable_scope(name) as scope:
-        #     cw = tf.get_variable(
-        #             "W",
-        #             shape=cw.shape,
-        #             initializer=tf.constant_initializer(cw))
-        #     b = tf.get_variable(
-        #             "b",
-        #             shape=b.shape,
-        #             initializer=tf.constant_initializer(b))
+        with tf.variable_scope(name) as scope:
+            cw = tf.get_variable(
+                    "W",
+                    shape=cw.shape,
+                    initializer=tf.constant_initializer(cw))
+            b = tf.get_variable(
+                    "b",
+                    shape=b.shape,
+                    initializer=tf.constant_initializer(b))
 
-        #     fc = tf.nn.bias_add( tf.matmul( x, cw ), b, name=scope)
-        weights = self.get_weight(name)
-        biases = self.get_bias(name)
+            fc = tf.nn.bias_add( tf.matmul( x, cw ), b, name=scope.name)
+        #fc = tf.nn.bias_add( tf.matmul( x, cw ), b)
+        # weights = self.get_weight(name)
+        # biases = self.get_bias(name)
 
-        # Fully connected layer. Note that the '+' operation automatically
-        # broadcasts the biases.
-        fc = tf.nn.bias_add(tf.matmul(x, weights), biases)
-
+        # # Fully connected layer. Note that the '+' operation automatically
+        # # broadcasts the biases.
+        # fc = tf.nn.bias_add(tf.matmul(x, weights), biases)
+        #print('name:', name, 'shape:', np.shape(fc))
         return fc
 
     def new_fc_layer( self, bottom, input_size, output_size, name ):
@@ -114,7 +115,7 @@ class Detector():
                     "b",
                     shape=[output_size],
                     initializer=tf.constant_initializer(0.))
-            fc = tf.nn.bias_add( tf.matmul(x, w), b, name=scope)
+            fc = tf.nn.bias_add( tf.matmul(x, w), b, name=scope.name)
 
         return fc
 
@@ -156,12 +157,14 @@ class Detector():
         relu5_3 = self.conv_layer( relu5_2, "conv5_3")
         pool5 = tf.nn.max_pool(relu5_3, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1],
                                padding='SAME', name='pool5')
+        #print('name:','relu5_3', "shape:", np.shape(relu5_3))
+        #print('name:','pool5', "shape:", np.shape(pool5))
 
         fc6 = self.fc_layer(pool5, "fc6")
         assert fc6.get_shape().as_list()[1:] == [4096]
         relu6 = tf.nn.relu(fc6)
 
-        if train_mode is not None:
+        if train_mode is not False:
             relu6 = tf.cond(train_mode, lambda: tf.nn.dropout(relu6, 0.5), lambda: relu6)
         elif self.trainable:
             relu6 = tf.nn.dropout(relu6, 0.5)
@@ -170,37 +173,40 @@ class Detector():
         fc7 = self.fc_layer(relu6, "fc7")
         relu7 = tf.nn.relu(fc7)
 
-        if train_mode is not None:
+        if train_mode is not False:
             relu7 = tf.cond(train_mode, lambda: tf.nn.dropout(relu7, 0.5), lambda: relu7)
         elif self.trainable:
             relu7 = tf.nn.dropout(relu7, 0.5)
 
         fc8 = self.fc_layer(relu7, "fc8")
 
-        prob = tf.nn.softmax(fc8, name="prob")
-
-        conv6 = self.new_conv_layer( relu5_3, [3,3,512,1024], "conv6") # [filter_height * filter_width * in_channels, output_channels].
-        gap = tf.reduce_mean( conv6, [1,2] )
-
+        # prob = tf.nn.softmax(fc8, name="prob")
+        # Old version	
+        # conv6 = self.new_conv_layer( relu5_3, [3,3,512,1024], "conv6") # [filter_height * filter_width * in_channels, output_channels].
+        # print(np.shape(conv6)) #(?, 14, 14, 1024)
+        # gap = tf.reduce_mean( conv6, [1,2] )
+        # print(np.shape(gap)) #(?, 1024) reduce axis=1 and axis=2 by calculating mean
+        
+        # phai tao moi vi trong pre-trained model khong co GAP
         with tf.variable_scope("GAP"):
             gap_w = tf.get_variable(
                     "W",
-                    shape=[1024, self.n_labels],
+                    shape=[1000, self.n_labels],
                     initializer=tf.random_normal_initializer(0., 0.01))
 
-        output = tf.matmul( gap, gap_w)
+        output = tf.matmul( fc8, gap_w)
 
-        return pool1, pool2, pool3, pool4, relu5_3, conv6, gap, output
+        return pool1, pool2, pool3, pool4, relu5_3, fc8, output
 
-    def get_classmap(self, label, conv6):
-        conv6_resized = tf.image.resize_bilinear( conv6, [224, 224] )
+    def get_classmap(self, label, conv5):
+        conv5_resized = tf.image.resize_bilinear( conv5, [224, 224] )
         with tf.variable_scope("GAP", reuse=True):
             label_w = tf.gather(tf.transpose(tf.get_variable("W")), label)
-            label_w = tf.reshape( label_w, [-1, 1024, 1] ) # [batch_size, 1024, 1]
+            label_w = tf.reshape( label_w, [-1, 1000, 1] ) # [batch_size, 1024, 1]
 
-        conv6_resized = tf.reshape(conv6_resized, [-1, 224*224, 1024]) # [batch_size, 224*224, 1024]
+        conv5_resized = tf.reshape(conv5_resized, [-1, 224*224, 1000]) # [batch_size, 224*224, 1024]
 
-        classmap = tf.matmul( conv6_resized, label_w )
+        classmap = tf.matmul( conv5_resized, label_w )
         classmap = tf.reshape( classmap, [-1, 224,224] )
         return classmap
 
