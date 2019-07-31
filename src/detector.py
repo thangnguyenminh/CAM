@@ -119,7 +119,10 @@ class Detector():
 
         return fc
 
-    def inference( self, rgb, train_mode=False ):
+    def inference( self, rgb, train_mode=False, CAM=True ):
+    	"""
+    	:param CAM: "True" for training CAM and "False" for training Grad-Cam
+    	"""
         rgb *= 255.0
         r, g, b = tf.split(rgb, 3, 3)
         bgr = tf.concat(
@@ -155,58 +158,80 @@ class Detector():
         relu5_1 = self.conv_layer( pool4, "conv5_1")
         relu5_2 = self.conv_layer( relu5_1, "conv5_2")
         relu5_3 = self.conv_layer( relu5_2, "conv5_3")
-        pool5 = tf.nn.max_pool(relu5_3, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1],
-                               padding='SAME', name='pool5')
-        #print('name:','relu5_3', "shape:", np.shape(relu5_3))
-        #print('name:','pool5', "shape:", np.shape(pool5))
 
-        fc6 = self.fc_layer(pool5, "fc6")
-        assert fc6.get_shape().as_list()[1:] == [4096]
-        relu6 = tf.nn.relu(fc6)
-
-        if train_mode is not False:
-            relu6 = tf.cond(train_mode, lambda: tf.nn.dropout(relu6, 0.5), lambda: relu6)
-        elif self.trainable:
-            relu6 = tf.nn.dropout(relu6, 0.5)
-
-
-        fc7 = self.fc_layer(relu6, "fc7")
-        relu7 = tf.nn.relu(fc7)
-
-        if train_mode is not False:
-            relu7 = tf.cond(train_mode, lambda: tf.nn.dropout(relu7, 0.5), lambda: relu7)
-        elif self.trainable:
-            relu7 = tf.nn.dropout(relu7, 0.5)
-
-        fc8 = self.fc_layer(relu7, "fc8")
-
-        # prob = tf.nn.softmax(fc8, name="prob")
-        # Old version	
-        # conv6 = self.new_conv_layer( relu5_3, [3,3,512,1024], "conv6") # [filter_height * filter_width * in_channels, output_channels].
-        # print(np.shape(conv6)) #(?, 14, 14, 1024)
-        # gap = tf.reduce_mean( conv6, [1,2] )
-        # print(np.shape(gap)) #(?, 1024) reduce axis=1 and axis=2 by calculating mean
+        # >>>>>>>>>> Class Activation Map <<<<<<<<<<<<<<<<<<<<<< #
+        if CAM:
+	        # Old version	
+	        conv6 = self.new_conv_layer( relu5_3, [3,3,512,1024], "conv6") # [filter_height * filter_width * in_channels, output_channels].
+	        # print(np.shape(conv6)) #(?, 14, 14, 1024)
+	       	gap = tf.reduce_mean( conv6, [1,2] )
+	        # print(np.shape(gap)) #(?, 1024) reduce axis=1 and axis=2 by calculating mean
+	        
+	        # phai tao moi vi trong pre-trained model khong co GAP
         
-        # phai tao moi vi trong pre-trained model khong co GAP
-        with tf.variable_scope("GAP"):
-            gap_w = tf.get_variable(
-                    "W",
-                    shape=[1000, self.n_labels],
-                    initializer=tf.random_normal_initializer(0., 0.01))
+	        with tf.variable_scope("GAP"):
+	            gap_w = tf.get_variable(
+	                    "W",
+	                    shape=[1024, self.n_labels],
+	                    initializer=tf.random_normal_initializer(0., 0.01))
 
-        output = tf.matmul( fc8, gap_w)
+	        output = tf.matmul( gap, gap_w)
+	        return pool1, pool2, pool3, pool4, relu5_3, conv6, output
 
-        return pool1, pool2, pool3, pool4, relu5_3, fc8, output
+	    # >>>>>>>>>> Gradient Class Activation Map <<<<<<<<<<<<<<<<<<<<<< #
+        else:
+	        pool5 = tf.nn.max_pool(relu5_3, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1],
+	                               padding='SAME', name='pool5')
+	        #print('name:','relu5_3', "shape:", np.shape(relu5_3))
+	        #print('name:','pool5', "shape:", np.shape(pool5))
 
-    def get_classmap(self, label, conv5):
-        conv5_resized = tf.image.resize_bilinear( conv5, [224, 224] )
+	        fc6 = self.fc_layer(pool5, "fc6")
+	        assert fc6.get_shape().as_list()[1:] == [4096]
+	        relu6 = tf.nn.relu(fc6)
+
+	        if train_mode is not False:
+	            relu6 = tf.cond(train_mode, lambda: tf.nn.dropout(relu6, 0.5), lambda: relu6)
+	        elif self.trainable:
+	            relu6 = tf.nn.dropout(relu6, 0.5)
+
+
+	        fc7 = self.fc_layer(relu6, "fc7")
+	        relu7 = tf.nn.relu(fc7)
+
+	        if train_mode is not False:
+	            relu7 = tf.cond(train_mode, lambda: tf.nn.dropout(relu7, 0.5), lambda: relu7)
+	        elif self.trainable:
+	            relu7 = tf.nn.dropout(relu7, 0.5)
+
+	        fc8 = self.fc_layer(relu7, "fc8")
+
+	        # Old version	
+	        conv6 = self.new_conv_layer( relu5_3, [3,3,512,1024], "conv6") # [filter_height * filter_width * in_channels, output_channels].
+	        # print(np.shape(conv6)) #(?, 14, 14, 1024)
+	        # gap = tf.reduce_mean( conv6, [1,2] )
+	        # print(np.shape(gap)) #(?, 1024) reduce axis=1 and axis=2 by calculating mean
+	        
+	        # phai tao moi vi trong pre-trained model khong co GAP
+	        
+	        with tf.variable_scope("GAP"):
+	            gap_w = tf.get_variable(
+	                    "W",
+	                    shape=[1000, self.n_labels],
+	                    initializer=tf.random_normal_initializer(0., 0.01))
+
+	        output = tf.matmul( fc8, gap_w)
+
+        	return pool1, pool2, pool3, pool4, pool5, fc8, output
+
+    def get_classmap(self, label, conv6):
+        conv6_resized = tf.image.resize_bilinear( conv6, [224, 224] )
         with tf.variable_scope("GAP", reuse=True):
             label_w = tf.gather(tf.transpose(tf.get_variable("W")), label)
-            label_w = tf.reshape( label_w, [-1, 1000, 1] ) # [batch_size, 1024, 1]
+            label_w = tf.reshape( label_w, [-1, 1024, 1] ) # [batch_size, 1024, 1]
 
-        conv5_resized = tf.reshape(conv5_resized, [-1, 224*224, 1000]) # [batch_size, 224*224, 1024]
+        conv6_resized = tf.reshape(conv6_resized, [-1, 224*224, 1024]) # [batch_size, 224*224, 1024]
 
-        classmap = tf.matmul( conv5_resized, label_w )
+        classmap = tf.matmul( conv6_resized, label_w )
         classmap = tf.reshape( classmap, [-1, 224,224] )
         return classmap
 
